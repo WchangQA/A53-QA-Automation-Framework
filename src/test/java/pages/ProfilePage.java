@@ -4,6 +4,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import java.sql.*;
 
 public class ProfilePage extends BasePage {
     @FindBy(xpath="//input[@id='inputProfileCurrentPassword']")
@@ -16,8 +17,17 @@ public class ProfilePage extends BasePage {
     private WebElement submitBtn;
     @FindBy(xpath="//*[@class='success show']")
     private WebElement successNotification;
+    @FindBy(xpath="//*[@class='error show']")
+    private WebElement errorNotification;
     public boolean isSuccessNotificationActive;
     public String successNotificationText;
+    public boolean isErrorNotificationActive;
+    public String errorNotificationText;
+
+    static final String DB_URL = "jdbc:mysql://104.237.13.60:3306/dbkoel";
+    static final String USER = "dbuser08";
+    static final String PASS = "pa$$08";
+    static final String QUERY = "SELECT password FROM users WHERE email = 'william.chang@testpro.io'";
 
     public ProfilePage(WebDriver givenDriver) {
         super(givenDriver);
@@ -72,5 +82,40 @@ public class ProfilePage extends BasePage {
     public boolean waitForSuccessNotificationDisappear(){
         return findElementDisappear(successNotification);
     }
+    public ProfilePage getErrorNotification(){
+        WebElement errorNotificationWait = findElement(errorNotification);
+        isErrorNotificationActive = errorNotificationWait.isDisplayed();
+        errorNotificationText = errorNotificationWait.getText();
+        return this;
+    }
+    public boolean waitForErrorNotificationDisappear(){
+        return findElementDisappear(errorNotification);
+    }
+
+    public String getSQLPasswordValue(){
+
+        /*String driver = "com.mysql.cj.jdbc.Driver";
+        try {
+            Class.forName(driver);
+        } catch (ClassNotFoundException e) {
+            throw new RuntimeException(e);
+        }*/
+
+        try(Connection conn = DriverManager.getConnection(DB_URL, USER, PASS);
+
+            Statement stmt = conn.createStatement();
+            ResultSet rs = stmt.executeQuery(QUERY);) {
+            // Extract data from result set
+            if (rs.next()) {
+                return (rs.getString("password"));
+                // Retrieve by column name
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return "";
+    }
+
 
 }
