@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="AlbumSmoke">
+
+    <test name="Album Tests" preserve-order="true">
+        <classes>
+
+            <class name="AlbumTests" >
+
+             </class>
+        </classes>
+    </test>
+
+</suite>

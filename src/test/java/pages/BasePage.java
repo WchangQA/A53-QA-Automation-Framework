@@ -39,7 +39,12 @@ public class BasePage {
     protected void doubleClick(WebElement webElement){
         actions.doubleClick(findElement(webElement)).perform();
     }
-
+    protected void moveTo(WebElement webElement){
+        actions.moveToElement(findElement(webElement)).perform();
+    }
+    protected void moveToAlbumControlsLocation(WebElement webElement){
+        actions.moveToLocation(490,312).perform();
+    }
     public String getActualPageUrl(){
         return driver.getCurrentUrl();
     }
