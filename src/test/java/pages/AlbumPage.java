@@ -48,17 +48,21 @@ public class AlbumPage extends BasePage{
     }
 
     public boolean albumDefaultImageExists(){
-       return albumOneImage.isDisplayed();
+        WebElement albumOneImageWait = findElement(albumOneImage);
+        return albumOneImageWait.isDisplayed();
     }
     public boolean albumCoverImageExists(){
-        return albumTwoImage.isDisplayed();
+        WebElement albumTwoImageWait = findElement(albumTwoImage);
+        return albumTwoImageWait.isDisplayed();
     }
 
     public boolean albumTitleExists(){
-        return albumOneTitle.isDisplayed();
+        WebElement albumOneTitleWait = findElement(albumOneTitle);
+        return albumOneTitleWait.isDisplayed();
     }
     public boolean albumArtistExists(){
-        return albumOneArtist.isDisplayed();
+        WebElement albumOneArtistWait = findElement(albumOneArtist);
+        return albumOneArtistWait.isDisplayed();
     }
 
     public boolean shuffleBtnExists(){
