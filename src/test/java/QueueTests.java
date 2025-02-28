@@ -82,15 +82,19 @@ public class QueueTests extends BaseTest {
     }
 
     @Test
-    public void queuePageRedirection() {
+    public void queuePageRedirectionAlbum() {
         AlbumPage albumPage = new AlbumPage(getThreadLocal());
         albumPage.loadAlbumPage();
         albumPage.selectSongElement();
         QueuePage queuePage = new QueuePage(getThreadLocal());
         Assert.assertEquals(queuePage.getActualPageUrl(),"https://qa.koel.app/#!/queue");
+    }
+    @Test
+    public void queuePageRedirectionArtist() {
         ArtistPage artistPage = new ArtistPage(getThreadLocal());
         artistPage.loadArtistPage();
         artistPage.selectSongElement();
+        QueuePage queuePage = new QueuePage(getThreadLocal());
         Assert.assertEquals(queuePage.getActualPageUrl(),"https://qa.koel.app/#!/queue");
     }
     @Test
