@@ -8,6 +8,7 @@
             <class name="CucumberRunner"/>
             <class name="PlaylistTests"/>
             <class name="LoginTests" />
+            <class name="QueueTests"/>
             <class name="SongPlayerTests" />
         </classes>
     </test>
