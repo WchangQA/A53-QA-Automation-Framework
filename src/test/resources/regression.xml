@@ -1,16 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 
-<suite name="TestNG">
+<suite name="regression" parallel="tests" thread-count="3">
 
-    <test name="Koel Test" preserve-order="true">
+    <test name="Login Test" preserve-order="false">
         <classes>
+            <class name="LoginTests"/>
+            <class name="BaseTest"/>
             <class name="CucumberRunner"/>
             <class name="PlaylistTests"/>
             <class name="LoginTests" />
-            <class name="QueueTests"/>
             <class name="SongPlayerTests" />
         </classes>
     </test>
+
+
 
 </suite>

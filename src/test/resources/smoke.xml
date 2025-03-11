@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+
+<suite name="smoke" parallel="tests" thread-count="2">
+
+    <test name="Login Test" preserve-order="false">
+        <classes>
+            <class name="CucumberRunner"/>
+            <class name="LoginTests"/>
+            <class name="BaseTest"/>
+        </classes>
+    </test>
+
+    <test name="Playlist Test" preserve-order="false">
+        <classes>
+            <class name="PlaylistTests"/>
+            <class name="BaseTest"/>
+        </classes>
+    </test>
+
+    <test name="SongPlayer Test" preserve-order="false">
+        <classes>
+            <class name="SongPlayerTests"/>
+            <class name="BaseTest"/>
+        </classes>
+    </test>
+
+    <test name="Play Song" preserve-order="false">
+        <classes>
+            <class name="SongPlayerTests">
+                <methods>
+                    <include name="playSong"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+    <test name="Play Song" preserve-order="false">
+        <classes>
+            <class name="SongPlayerTests">
+                <methods>
+                    <include name="playSong"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+
+    <test name="Rename Playlist" preserve-order="false">
+        <parameter name ="BaseURL" value="https://qa.koel.app/" />
+        <classes>
+            <class name="PlaylistTests">
+                <methods>
+                    <include name="renamePlaylist"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+
+</suite>
