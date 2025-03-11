@@ -87,6 +87,7 @@ public class QueueTests extends BaseTest {
         albumPage.loadAlbumPage();
         albumPage.selectSongElement();
         QueuePage queuePage = new QueuePage(getThreadLocal());
+        queuePage.soundBarIsDisplayed();
         Assert.assertEquals(queuePage.getActualPageUrl(),"https://qa.koel.app/#!/queue");
     }
     @Test
@@ -95,6 +96,7 @@ public class QueueTests extends BaseTest {
         artistPage.loadArtistPage();
         artistPage.selectSongElement();
         QueuePage queuePage = new QueuePage(getThreadLocal());
+        queuePage.soundBarIsDisplayed();
         Assert.assertEquals(queuePage.getActualPageUrl(),"https://qa.koel.app/#!/queue");
     }
     @Test
